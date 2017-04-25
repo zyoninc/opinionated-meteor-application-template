@@ -1,0 +1,13 @@
+<template name="EXAMPLE_ADD">
+  {{#If_Logged_In}}
+    <div class="ui text container x-page-top">
+      {{> quickForm
+        collection=collection
+        template="semanticUI"
+        id="EXAMPLE_ADD_FORM"
+        type="insert"
+        resetOnSuccess=true
+      }}
+    </div>
+  {{/If_Logged_In}}
+</template>

@@ -1,0 +1,53 @@
+{
+  "name": "opinionated-meteor-starter",
+  "private": true,
+  "scripts": {
+    "start": "meteor --no-release-check --settings ./config/settings.development.json",
+    "start-dev": "DEBUG=* meteor --no-release-check --settings ./config/settings.development.json",
+    "lint": "eslint .",
+    "test": "meteor test --driver-package practicalmeteor:mocha --port 3100",
+    "test-watch": "TEST_BROWSER_DRIVER=chrome TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100",
+    "server-test": "meteor test --once --driver-package dispatch:mocha --port 3100",
+    "server-test-watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "opt --out pre-commit --exec 'npm run lint'",
+      "pre-push": "opt --out pre-push --exec 'npm run servertest'"
+    }
+  },
+  "engines": {
+    "node": ">=4 <=5"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.23.0",
+    "debug": "^2.6.3",
+    "izitoast": "^1.1.1",
+    "meteor-node-stubs": "~0.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.1",
+    "chai": "*",
+    "chromedriver": "^2.29.0",
+    "docdash": "^0.3.0",
+    "es6-enum": "^1.0.3",
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^0.6.2",
+    "eslint-plugin-meteor": "^3.4.0",
+    "eslint-plugin-react": "^4.3.0",
+    "ghooks": "^2.0.0",
+    "opt-cli": "^1.5.1",
+    "selenium-webdriver": "^3.0.0-beta-2",
+    "sinon": "^2.1.0"
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
+    }
+  }
+}

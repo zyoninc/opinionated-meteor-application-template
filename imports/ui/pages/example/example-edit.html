@@ -1,0 +1,14 @@
+<template name="EXAMPLE_EDIT">
+  {{#If_Logged_In}}
+    <div class="ui text container x-page-top">
+      {{> quickForm
+        collection=collection
+        template="semanticUI"
+        id="EXAMPLE_EDIT_FORM"
+        type="update"
+        doc=getDoc
+        buttonContent="Update"
+      }}
+    </div>
+  {{/If_Logged_In}}
+</template>

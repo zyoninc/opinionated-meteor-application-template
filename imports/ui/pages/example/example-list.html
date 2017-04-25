@@ -1,0 +1,34 @@
+<template name="EXAMPLE_LIST">
+  {{#If_Logged_In}}
+    <div class="ui text container x-page-top">
+      {{#if hasDataLoadingError}}
+        There was an error.
+      {{/if}}
+      {{#unless hasDataLoadingError}}
+        {{#if dataLoadSuccessful}}
+          <table class="ui celled table">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Edit</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{#each example in list}}
+              <tr>
+                <td>{{example.name}}</td>
+                <td>{{example.quantity}}</td>
+                <td><a href="{{pathFor exampleEditPage _id=example._id}}">Edit</a></td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+        {{else}}
+          {{> Loading}}
+        {{/if}}
+      {{/unless}}
+    </div>
+  {{/If_Logged_In}}
+</template>

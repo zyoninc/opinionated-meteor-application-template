@@ -1,0 +1,12 @@
+<template name="Header">
+    <div class="ui top fixed borderless inverted menu">
+  <div class="ui container">
+      <a class="item" href="{{ homePage }}"><h1>opinionated-meteor-application-template</h1></a>
+      {{#if currentUser}}
+        <a class="{{ isActivePath exampleAddPage }} item" href="{{ exampleAddPage }}">Add Example</a>
+        <a class="{{ isActivePath exampleListPage }} item" href="{{ exampleListPage }}">List Example</a>
+      {{/if}}
+      <a href="#" class="right aligned item">{{> loginButtons align="right"}} </a>
+    </div>
+  </div>
+</template>
