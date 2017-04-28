@@ -1,8 +1,6 @@
 import { Template } from 'meteor/templating';
-import { handleError, mapDataLoadingErrors } from '/client/lib/handle-error.js';
+import { pkgJson, handleError, mapDataLoadingErrors } from 'meteor/justinr1234:lib';
 import { default as logFactory } from 'debug';
-
-import pkgJson from '/package.json';
 
 const subscriptionHandlersDebug = logFactory(`@${pkgJson.name}${__filename}`);
 

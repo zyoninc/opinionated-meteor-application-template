@@ -1,10 +1,15 @@
 /* globals Package, Npm */
 Package.describe({
-  name: 'justinr1234:example',
+  name: 'justinr1234:lib',
   version: '0.0.1',
-  summary: 'justinr1234 Example',
+  summary: 'justinr1234 Lib',
   documentation: 'README.md',
   git: 'https://github.com/justinr1234/opinionated-meteor-application-template.git',
+});
+
+Npm.depends({
+  izitoast: '1.1.1',
+  debug: '2.6.3',
 });
 
 Package.onUse(api => {
@@ -16,18 +21,13 @@ Package.onUse(api => {
   api.use('ecmascript');
   api.use('random');
   api.use('underscore');
-  api.use('mongo');
 
   // CLIENT LIB
   api.use('templating', 'client');
   api.use('kadira:flow-router');
-  api.use('kadira:blaze-layout@2.3.0');
-  api.use('aldeed:autoform');
 
   // COMMON LIB
-  api.use('justinr1234:lib');
-  api.use('alanning:roles');
-  api.use('aldeed:simple-schema');
+  api.use('ongoworks:security');
 
   // MAIN MODULES
   api.mainModule('client/main.js', 'client');
@@ -35,7 +35,7 @@ Package.onUse(api => {
 });
 
 Package.onTest(api => {
-  api.use('justinr1234:example');
+  api.use('justinr1234:lib');
   api.use('practicalmeteor:chai');
   api.use('practicalmeteor:mocha');
   api.use('dispatch:mocha');

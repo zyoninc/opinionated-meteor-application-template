@@ -1,3 +1,5 @@
+import { publicationNames as examplePublicationNames } from 'meteor/justinr1234:example';
+
 export const publicationNames = {
-  EXAMPLE_PUBLICATION: 'ExamplePublication',
+  ...examplePublicationNames,
 };
