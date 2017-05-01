@@ -1,6 +1,6 @@
 {
   "name": "opinionated-meteor-starter",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "meteor --no-release-check --settings ./config/settings.development.json",
     "start-dev": "DEBUG=* meteor --no-release-check --settings ./config/settings.development.json",
@@ -13,7 +13,7 @@
   "config": {
     "ghooks": {
       "pre-commit": "opt --out pre-commit --exec 'npm run lint'",
-      "pre-push": "opt --out pre-push --exec 'npm run servertest'"
+      "pre-push": "opt --out pre-push --exec 'npm run server-test'"
     }
   },
   "engines": {
@@ -22,7 +22,6 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "debug": "^2.6.3",
-    "izitoast": "^1.1.1",
     "meteor-node-stubs": "~0.2.0"
   },
   "devDependencies": {
@@ -38,7 +37,7 @@
     "eslint-plugin-react": "^4.3.0",
     "ghooks": "^2.0.0",
     "opt-cli": "^1.5.1",
-    "selenium-webdriver": "^3.0.0-beta-2",
+    "selenium-webdriver": "3.0.0-beta-2",
     "sinon": "^2.1.0"
   },
   "postcss": {

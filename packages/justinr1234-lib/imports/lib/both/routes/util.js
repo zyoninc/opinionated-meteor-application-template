@@ -2,10 +2,9 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Random } from 'meteor/random';
 import { _ } from 'meteor/underscore';
-import { default as debugFactory } from 'debug';
+import { pkgJson, logFactory } from 'meteor/justinr1234:lib';
 
-import pkgJson from '/package.json';
-export const warn = debugFactory(`warn-@${pkgJson.name}${__filename}`);
+export const warn = logFactory(pkgJson, __filename, '@warn-');
 
 // TODO: Move config into global file
 // BEGIN: Config
@@ -21,9 +20,8 @@ export const APP_NOT_FOUND = 'App_Not_Found';
 export const mergeTemplates = (templates, ...args) => Object.assign({}, templates, ...args);
 
 export const defaultActionTemplates = name => mergeTemplates(defaultTemplates, { main: name });
-export const defaultAction = name => {
-  BlazeLayout.render(APP_BODY, defaultActionTemplates(name));
-};
+export const defaultAction = name => BlazeLayout.render(APP_BODY, defaultActionTemplates(name));
+export const defaultBlazeRender = main => BlazeLayout.render(APP_BODY, mergeTemplates(defaultTemplates, { main }));
 
 const getGroupFromPath = path => {
   const isRoot = path === '/';
@@ -117,4 +115,18 @@ export const flowRouterMapReducer = (flowRouterRoutes, routesByGroup) => {
   });
   return [...flowRouterRoutes, flowRouterGroup, ...groupRoutes];
 };
+export const transformRoutesJsonToRouteObject = routes => {
+  const routeMap = createRouteMap(routes) || {};
+  const routeGroups = routeGrouper(routeMap);
+  const routesByGroup = groupRoutesByGroup(routeGroups, routeMap);
+  return {
+    routeMap,
+    routeGroups,
+    routesByGroup,
+  };
+};
 export const createFlowRouterRoutes = (routesByGroup) => _.reduce(routesByGroup, flowRouterMapReducer, []);
+export const mergeRoutes = (a = {}, b = {}) => ({ ...a, ...b });
+export const mergeRouteMap = (a = {}, b = {}) => ({ ...a, ...b });
+export const mergeRouteGroups = (a = [], b = []) => [...a, ...b];
+export const mergeRoutesByGroup = (a = {}, b = {}) => ({ ...a, ...b });

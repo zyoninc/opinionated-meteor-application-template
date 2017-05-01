@@ -1,9 +1,9 @@
 import izitoast from 'izitoast';
 import { _ } from 'meteor/underscore';
-import { default as logFactory } from 'debug';
 import { Random } from 'meteor/random';
+import { pkgJson } from 'meteor/justinr1234:lib';
+import { default as logFactory } from 'debug';
 
-import pkgJson from '/package.json';
 const handleErrorDefaultDebug = logFactory(`@${pkgJson.name}${__filename}`);
 
 const validSeverities = ['info', 'success', 'warning', 'error'];

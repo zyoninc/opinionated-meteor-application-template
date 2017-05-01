@@ -9,7 +9,7 @@ import {
   routeGrouper,
   groupRoutesByGroup,
   createFlowRouterRoutes,
-} from '/imports/api/helpers/both/routes/util.js';
+} from './util.js';
 
 const { assert } = chai;
 

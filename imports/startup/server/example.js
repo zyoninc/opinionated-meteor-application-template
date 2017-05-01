@@ -1,4 +1,4 @@
-import { ExampleCollection } from '/imports/api/example/example.js';
+import { ExampleCollection } from 'meteor/justinr1234:example';
 
 const seeds = [
   { name: 'Basket', quantity: 3 },

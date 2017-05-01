@@ -5,6 +5,7 @@
       {{#if currentUser}}
         <a class="{{ isActivePath exampleAddPage }} item" href="{{ exampleAddPage }}">Add Example</a>
         <a class="{{ isActivePath exampleListPage }} item" href="{{ exampleListPage }}">List Example</a>
+        {{> DEBUG_ROUTE_MENU routes=routes }}
       {{/if}}
       <a href="#" class="right aligned item">{{> loginButtons align="right"}} </a>
     </div>
