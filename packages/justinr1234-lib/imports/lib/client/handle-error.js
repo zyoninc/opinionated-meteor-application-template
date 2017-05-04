@@ -1,19 +1,19 @@
 import izitoast from 'izitoast';
 import { _ } from 'meteor/underscore';
 import { Random } from 'meteor/random';
-import { pkgJson } from 'meteor/justinr1234:lib';
-import { default as logFactory } from 'debug';
+import { pkgJson, logFactory } from 'meteor/justinr1234:lib';
 
-const handleErrorDefaultDebug = logFactory(`@${pkgJson.name}${__filename}`);
+const handleErrorDefaultDebug = logFactory(pkgJson, __filename);
 
 const validSeverities = ['info', 'success', 'warning', 'error'];
 
-export const handleError = this.handleError = function handleError({
-  error = null, // Meteor.Error type
+export const handleError = this.handleError = function handleError(
+  { error: error = null } = {}, // Meteor.Error type
   debug = null,
   dataLoadingErrors = null,
-  useToast = true,
-}) {
+  useToast = true
+) {
+  const debugOut = debug || handleErrorDefaultDebug;
   const title = error && error.reason || 'Unknown Error';
   let toastMessage = 'Unknown Error';
   let toastSeverity = 'error';
@@ -44,13 +44,12 @@ export const handleError = this.handleError = function handleError({
     dataLoadingErrors.set(Random.id(), error);
   }
 
+  debugOut(`${title}: ${toastMessage}`);
+  debugOut(error);
+
   if (useToast) {
     return izitoast[toastSeverity]({ title, message: toastMessage });
   }
-
-  const debugOut = debug || handleErrorDefaultDebug;
-  debugOut(`${title}: ${toastMessage}`);
-  debugOut(error);
 
   return error;
 };

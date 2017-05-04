@@ -19,8 +19,8 @@ Package.onUse(api => {
   api.use('mongo');
 
   // CLIENT LIB
-  api.use('templating', 'client');
-  api.use('kadira:flow-router');
+  api.use('templating@1.3.2', 'client');
+  api.use('kadira:flow-router@2.12.1');
   api.use('kadira:blaze-layout@2.3.0');
   api.use('aldeed:autoform');
 
@@ -28,6 +28,9 @@ Package.onUse(api => {
   api.use('justinr1234:lib');
   api.use('alanning:roles');
   api.use('aldeed:simple-schema');
+
+  // SERVER LIB
+  api.use('ongoworks:security@2.1.0');
 
   // MAIN MODULES
   api.mainModule('client/main.js', 'client');

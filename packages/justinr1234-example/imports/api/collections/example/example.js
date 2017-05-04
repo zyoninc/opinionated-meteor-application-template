@@ -32,7 +32,7 @@ export const ExampleSchema = new SimpleSchema({
     regEx: SimpleSchema.RegEx.Id,
     autoValue: function autoValue(form) {
       // this.userId is not instantiated on test runs, therefore { userId }
-      // are passed into schema instances in tests 1/11/2017
+      // are passed into schema instances in tests
       return this.userId || form.userId;
     },
     autoform: {
@@ -51,7 +51,8 @@ if (Meteor.isServer) {
       ExampleCollection,
     ])
     .ifLoggedIn()
-    .allowInClientCode(); // TODO: Refactor to meteor method
+    // TODO: Refactor to method - https://github.com/justinr1234/opinionated-meteor-application-template/issues/13
+    .allowInClientCode();
 
   Security
     .permit('update')
@@ -60,5 +61,16 @@ if (Meteor.isServer) {
     ])
     .ifLoggedIn()
     .ownsDocument('userId')
-    .allowInClientCode(); // TODO: Refactor to meteor method
+    // TODO: Refactor to method - https://github.com/justinr1234/opinionated-meteor-application-template/issues/13
+    .allowInClientCode();
+
+  Security
+    .permit('remove')
+    .collections([
+      ExampleCollection,
+    ])
+    .ifLoggedIn()
+    .ownsDocument('userId')
+    // TODO: Refactor to method - https://github.com/justinr1234/opinionated-meteor-application-template/issues/13
+    .allowInClientCode();
 }

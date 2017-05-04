@@ -11,16 +11,29 @@
             <tr>
               <th>Name</th>
               <th>Quantity</th>
-              <th>Edit</th>
+              <th>Actions</th>
             </tr>
             </thead>
-
             <tbody>
-            {{#each example in list}}
+            {{#each list}}
               <tr>
-                <td>{{example.name}}</td>
-                <td>{{example.quantity}}</td>
-                <td><a href="{{pathFor exampleEditPage _id=example._id}}">Edit</a></td>
+                <td>{{name}}</td>
+                <td>{{quantity}}</td>
+                <td class="ui four wide column">
+                  {{#if confirmRemove _id}}
+                    <div class="ui mini buttons">
+                      <button class="ui mini button confirm-remove">Remove</button>
+                      <div class="or"></div>
+                      <button class="ui mini primary button cancel-remove">Cancel</button>
+                    </div>
+                  {{else}}
+                    <div class="ui mini buttons">
+                      <button class="ui negative button init-remove">Remove</button>
+                      <div class="or"></div>
+                      <a class="ui positive button" href="{{pathFor exampleEditPage _id=_id}}">Edit</a>
+                    </div>
+                  {{/if}}
+                </td>
               </tr>
             {{/each}}
             </tbody>
