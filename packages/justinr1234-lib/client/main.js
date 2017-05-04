@@ -1,4 +1,5 @@
 import pkgJson from '../package.json';
+import 'izitoast/dist/css/iziToast.min.css';
 import { logFactory } from '../imports/lib/debug.js';
 import { handleError, mapDataLoadingErrors } from '../imports/lib/client/handle-error.js';
 import { subscriptionHandlers, subscriptionHandlersHelpers } from '../imports/lib/client/subscription-handlers.js';

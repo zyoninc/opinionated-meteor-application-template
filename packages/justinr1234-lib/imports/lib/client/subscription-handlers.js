@@ -13,7 +13,7 @@ export const defaultOnStop = function defaultOnError(dataLoading, dataLoadingErr
 
   if (error) {
     const debug = onStopDebug || subscriptionHandlersDebug;
-    handleError({ error, debug, dataLoadingErrors });
+    handleError(error, debug, dataLoadingErrors);
   }
 };
 
