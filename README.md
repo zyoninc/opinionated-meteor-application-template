@@ -1,8 +1,36 @@
 ![](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/doc/home-page.png)
 
+Table of Contents
+=================
+  * [Features](#features)
+  * [Installation](#installation)
+  * [Git Hooks](#git-hooks)
+  * [Development Flow](#development-flow)
+  * [Walkthrough](#walkthrough)
+     * [Directory structure](#directory-structure)
+     * [Import conventions](#import-conventions)
+     * [Naming conventions](#naming-conventions)
+     * [Preinstalled packages](#preinstalled-packages)
+     * [Application functionality](#application-functionality)
+        * [Home page](#home-page)
+        * [Example List page](#example-list-page)
+        * [Example Add page](#example-add-page)
+        * [Example Edit page](#example-edit-page)
+     * [Collections](#collections)
+     * [CSS](#css)
+     * [Routing](#routing)
+     * [Forms](#forms)
+     * [Authentication](#authentication)
+     * [Authorization](#authorization)
+     * [Configuration](#configuration)
+     * [Quality Assurance](#quality-assurance)
+        * [ESLint](#eslint)
+
+----
+## Features
 Opinionated-meteor-application-template is a sample Meteor 1.4 application that is created to illustrate:
 
-  * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html) 
+  * A standard directory layout using 'imports/' as recommended in the [Meteor Guide](https://guide.meteor.com/structure.html)
   * A standard set of Meteor packages and example usage (FlowRouter, AutoForm, Accounts, and Semantic UI)
   * Simple authorization/authentication and use of settings files for initialization.
   * Simple quality assurance using [ESLint](http://eslint.org) with packages to partially enforce the [Meteor Coding Standards](https://guide.meteor.com/code-style.html) and the [AirBnB Javascript Style Guide](https://github.com/airbnb/javascript).
@@ -18,7 +46,7 @@ Examples of the these capabilities will be provided elsewhere.
 First, [install Meteor](https://www.meteor.com/install).
 
 Second, [create a new GitHub repository](https://help.github.com/articles/create-a-repo/), and clone it into your local workspace.
-  
+
 You don't need to copy the README.md or index.md files (you should write your own), and you don't need to copy the doc/ directory (it contains only screenshots displayed in this page of documentation.)
 
 Now your local repo should contain the template. To test that everything is OK, cd into the app directory install the required libraries with:
@@ -91,7 +119,7 @@ The app/ directory has this structure:
 client/
   lib/           # holds Semantic-UI files.
   head.html      # the <head>
-  main.js        # import all the client-side html and js files. 
+  main.js        # import all the client-side html and js files.
 
 imports/
   api/           # Define collection processing code (client + server side)
@@ -108,7 +136,7 @@ node_modules/    # managed by Meteor
 packages/        # Contains application specific packages
 
 public/          # static assets (like images) can go here.
-  
+
 server/
    publications/ # contains server side publications
    main.js       # import all the server-side js files.
@@ -133,7 +161,7 @@ import '/imports/ui/pages';
 
 Lines all invoke the index.js file in the specified directory.
 
-We use this approach to make it more simple to understand what code is loaded and in what order, and to simplify debugging when some code or templates do not appear to be loaded.  In our approach, there are only two places to look for top-level imports: the main.js files in client/ and server/, and the index.js files in import subdirectories. 
+We use this approach to make it more simple to understand what code is loaded and in what order, and to simplify debugging when some code or templates do not appear to be loaded.  In our approach, there are only two places to look for top-level imports: the main.js files in client/ and server/, and the index.js files in import subdirectories.
 
 Note that this two-level import structure ensures that all code and templates are loaded, but does not ensure that the symbols needed in a given file are accessible.  So, for example, a symbol bound to a collection still needs to be imported into any file that references it. For example, a server startup file needs to reference the symbol "ExampleCollection" in order to initialize the collection, so it must import the symbol ExampleCollection:
 
@@ -152,7 +180,7 @@ if (ExampleCollection.find().count() === 0) {
 ```
 
 This strategy is not ideal for all application scenarios, but for those just starting to get comfortable with importing in Javascript, it should reduce confusion and import-related bugs.
- 
+
 ### Naming conventions
 
 This system adopts the following naming conventions:
@@ -172,18 +200,18 @@ In a nutshell, meteor-application-template includes support for:
   * Routing (flow-router, flow-router-helpers, active-route)
   * Presentation (semantic-ui, spin)
   * Security (ongoworks:security, alanning:roles)
-  
+
 ### Application functionality
 
-The application implements a simple CRUD application for managing "Example", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, each implemented by a template in the imports/ui/pages directory. 
+The application implements a simple CRUD application for managing "Example", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, each implemented by a template in the imports/ui/pages directory.
 
 #### Home page
 
-Implemented by the HOME_PAGE template. 
+Implemented by the HOME_PAGE template.
 
 ![](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/doc/home-page.png)
 
-You must login to access any page other than the Home page. 
+You must login to access any page other than the Home page.
 
 #### Example List page
 
@@ -246,7 +274,7 @@ The application allows users to register and create new accounts at any time.
 
 Only logged in users can manipulate ExampleCollection documents. You can only edit and view documents owned by the currently logged in user.
 
-To prevent users who are not logged in from accessing pages that manipulate ExampleCollection instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions). 
+To prevent users who are not logged in from accessing pages that manipulate ExampleCollection instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions).
 
 The application implements template-based authorization using an If_Logged_In template, defined in [imports/ui/layouts/if-logged-in.html](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/ui/layouts/if-logged-in.html) and [imports/ui/layouts/if-logged-in.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/ui/layouts/if-logged-in.js).
 
