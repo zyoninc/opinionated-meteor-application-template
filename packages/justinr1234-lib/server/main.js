@@ -21,6 +21,7 @@ import {
 import { Router } from '../imports/lib/both/routes/router.js';
 import '../imports/startup/both';
 import { DEBUG_ENABLED } from '../imports/startup/both/debug.js';
+import { CollectionBehaviors } from '../imports/lib/both/collection-behaviors.js';
 
 export {
   pkgJson,
@@ -43,4 +44,5 @@ export {
   mergeRouteGroups,
   mergeRoutesByGroup,
   DEBUG_ENABLED,
+  CollectionBehaviors,
 };
