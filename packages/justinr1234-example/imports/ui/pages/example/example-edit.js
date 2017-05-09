@@ -10,6 +10,7 @@ import {
   Router,
   logFactory,
   Publications,
+  autoformHooks,
 } from 'meteor/justinr1234:lib';
 
 const debug = logFactory(pkgJson.name, __filename);
@@ -17,19 +18,23 @@ const debug = logFactory(pkgJson.name, __filename);
 const onCreated = function onCreated() {
   const instance = this;
   const dataLoading = instance.dataLoading = new ReactiveVar(true);
+  const formSuccess = instance.formSuccess = new ReactiveVar(null);
   const dataLoadingErrors = instance.dataLoadingErrors = new ReactiveDict();
   const composedHandlers = subscriptionHandlers({ dataLoading, dataLoadingErrors, debug });
 
   instance.subscribe(Publications.publicationNames.EXAMPLE_PUBLICATION, composedHandlers);
-};
 
-const hooks = {
-  EXAMPLE_EDIT_FORM: {
-    onSuccess: () => FlowRouter.go(Router.routeMap.EXAMPLE_LIST.path),
-  },
+  const baseName = Router.routeMap.EXAMPLE_EDIT.name;
+  const successRoute = Router.routeMap.EXAMPLE_LIST.path;
+  const hooks = autoformHooks({
+    formSuccess,
+    autoformError: dataLoadingErrors,
+    baseName,
+    successRoute,
+    debug,
+  });
+  AutoForm.hooks(hooks);
 };
-
-AutoForm.hooks(hooks);
 
 const helpers = {
   getDoc: () => ExampleCollection.findOne(FlowRouter.getParam('_id')),
