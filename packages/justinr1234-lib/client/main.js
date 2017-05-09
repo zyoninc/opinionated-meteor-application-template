@@ -25,6 +25,7 @@ import '../imports/ui/templates';
 import { autoformHooks } from '../imports/lib/client/autoform-hooks.js';
 import '../imports/startup/both';
 import { DEBUG_ENABLED } from '../imports/startup/both/debug.js';
+import { CollectionBehaviors } from '../imports/lib/both/collection-behaviors.js';
 
 export {
   pkgJson,
@@ -51,4 +52,5 @@ export {
   mergeRoutesByGroup,
   autoformHooks,
   DEBUG_ENABLED,
+  CollectionBehaviors,
 };
