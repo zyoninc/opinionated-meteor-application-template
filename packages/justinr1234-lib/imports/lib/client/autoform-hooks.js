@@ -64,7 +64,7 @@ export const autoformHooks = function autoformHooks({
         update: defaultUpdateBefore,
       },
       onError: updateOnError || function updateOnErrorWrapper(formType, error) {
-        defaultOnError(formSuccess, autoformError, debug, formType, error);
+        defaultOnError.apply(this, [formSuccess, autoformError, debug, formType, error]);
       },
       onSuccess: updateOnSuccess || function updateOnSuccessWrapper() {
         defaultUpdateOnSuccess.apply(this, [formSuccess, debug, successRoute]);
@@ -72,7 +72,7 @@ export const autoformHooks = function autoformHooks({
     },
     [`INSERT_${baseName}_FORM`]: {
       onError: insertOnError || function insertOnErrorWrapper(formType, error) {
-        defaultOnError(formSuccess, autoformError, debug, formType, error);
+        defaultOnError.apply(this, [formSuccess, autoformError, debug, formType, error]);
       },
       onSuccess: insertOnSuccess || function insertOnSuccessWrapper() {
         defaultInsertOnSuccess.apply(this, [formSuccess, debug, successRoute]);
