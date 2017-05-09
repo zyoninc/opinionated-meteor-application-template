@@ -9,7 +9,6 @@ import {
   mergeRoutesByGroup,
   createFlowRouterRoutes,
 } from 'meteor/justinr1234:lib';
-import { routes as libRoutes } from '../../routes.js';
 
 const debug = logFactory(pkgJson.name, __filename);
 
@@ -81,4 +80,4 @@ export class JustinRouter {
   }
 }
 
-export const Router = new JustinRouter(libRoutes);
+export const Router = new JustinRouter();

@@ -1,7 +1,7 @@
 /* globals Package, Npm */
 Package.describe({
   name: 'justinr1234:lib',
-  version: '0.0.15',
+  version: '0.0.16',
   summary: 'justinr1234 Lib',
   documentation: 'README.md',
   git: 'https://github.com/justinr1234/opinionated-meteor-application-template/tree/master/packages/justinr1234-lib',
