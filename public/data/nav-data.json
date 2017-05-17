@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Example",
+    "link": "#",
+    "type": "link",
+    "icon": "student",
+    "items": [
+      {
+        "name": "List",
+        "link": "/example/list",
+        "type": "link",
+        "icon": "list"
+      },
+      {
+        "name": "Add",
+        "link": "/example/add",
+        "type": "link",
+        "icon": "plus"
+      }
+    ]
+  },
+  {
+    "name": "Kitchen Sink",
+    "link": "/kitchen-sink",
+    "type": "link",
+    "icon": "wrench"
+  }
+]

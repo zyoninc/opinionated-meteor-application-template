@@ -18,3 +18,4 @@
 9. Create routes in `<package>/imports/routes.js` - [FlowRouter docs](https://github.com/kadirahq/flow-router) - [Example](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/packages/justinr1234-exaxmple/imports/routes.js)
 10. Create pages in `<package>/imports/ui/pages/` - [Meteor Blaze Template Docs](http://blazejs.org/api/templates.html) - [Meteor Spacebars Template Docs](http://blazejs.org/guide/spacebars.html) - [Example](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/packages/justinr1234-exaxmple/imports/ui/pages/)
 11. Common abstracted functionality (such as global [Spacebars](http://blazejs.org/guide/spacebars.html) helpers) should be added to the [justinr1234:lib](https://github.com/justinr1234/justinr1234-lib) package
+12. Add main menu items in `/public/data/nav-data.json`

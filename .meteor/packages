@@ -47,8 +47,6 @@ fabienb4:autoform-semantic-ui
 
 # For prototyping purposes, enable autopublish and insecure
 
-
-
 practicalmeteor:chai
 practicalmeteor:mocha
 dispatch:mocha
@@ -57,4 +55,8 @@ ongoworks:security
 alanning:roles
 justinr1234:lib
 justinr1234:example
+justinr1234:menu
+justinr1234:golgi
 mdg:validated-method
+http
+justinr1234:kitchen-sink

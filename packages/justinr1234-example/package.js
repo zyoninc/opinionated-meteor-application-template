@@ -1,16 +1,14 @@
 /* globals Package, Npm */
 Package.describe({
   name: 'justinr1234:example',
-  version: '0.0.3',
+  version: '0.0.4',
   summary: 'justinr1234 Example',
   documentation: 'README.md',
-  git: 'https://github.com/justinr1234/opinionated-meteor-application-template.git',
+  git: 'https://github.com/justinr1234/opinionated-meteor-application-template/packages/justinr1234-example',
 });
 
 Package.onUse(api => {
-  // If no version is specified for an `api.use` dependency, use the one defined
-  // in Meteor 1.4.3.1.
-  api.versionsFrom('1.4.3.1');
+  api.versionsFrom('1.4.4.2');
   api.use('reactive-var');
   api.use('reactive-dict');
   api.use('ecmascript');

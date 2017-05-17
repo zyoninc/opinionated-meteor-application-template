@@ -92,7 +92,7 @@ This project is configured to use githooks on commit and push to ensure you are 
 
 ## Development Flow
 
-It is recommended to run `meteor npm run start-dev` while developing to enable the `debug` package that's being utilized. See [imports/startup/server/accounts.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/startup/server/accounts.js#7) for an example of how to use the debug package.
+It is recommended to run `meteor npm run start-dev` while developing to enable the `debug` package that's being utilized. In the browser, you can open the development console and type `localStorage.debug = '*'` to enable client side debugging. See [imports/startup/server/accounts.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/startup/server/accounts.js#7) for an example of how to use the debug package.
 
 When developing a module by itself that can be unit tested (on the server side), run with `meteor npm run server-test-watch` as this will re-run tests on every change.
 
@@ -128,7 +128,7 @@ imports/
     client/
     server/
   ui/
-    layouts/     # Layouts contain common elements to all pages (i.e. menubar and footer)
+    layouts/     # Layouts contain common elements to all pages (i.e. footer)
     pages/       # Pages are navigated to by FlowRouter routes.
 
 node_modules/    # managed by Meteor
@@ -200,16 +200,20 @@ In a nutshell, meteor-application-template includes support for:
   * Routing (flow-router, flow-router-helpers, active-route)
   * Presentation (semantic-ui, spin)
   * Security (ongoworks:security, alanning:roles)
+  * Packages specific to this project (justinr1234:lib, justinr1234:golgi, justinr1234:menu)
 
 ### Application functionality
 
-The application implements a simple CRUD application for managing "Example", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, each implemented by a template in the imports/ui/pages directory.
+The application implements a simple CRUD application for managing "Example", which is a Mongo Collection consisting of a name (String) and a quantity (Number). There are four pages, each implemented by a template in the imports/ui/pages directory of the justinr1234:example package.
 
 #### Home page
 
 Implemented by the HOME_PAGE template.
 
 ![](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/doc/home-page.png)
+![](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/doc/home-page-expand.png)
+![](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/doc/mobile.png)
+![](https://raw.githubusercontent.com/justinr1234/opinionated-meteor-application-template/master/doc/mobile-expand.png)
 
 You must login to access any page other than the Home page.
 
@@ -236,9 +240,9 @@ You must login to add edit documents in the ExampleCollection collection.
 
 The application implements a single Collection called "ExampleCollection". Each ExampleCollection document has two fields: a String "name" and a Number "quantity".
 
-The ExampleCollection collection is defined in [imports/api/example/example.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/api/example/example.js).
+The ExampleCollection collection is defined in [imports/api/example/example.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/packages/justinr1234-example/imports/api/example/example.js) of the justinr1234:example package.
 
-The ExampleCollection collection is initialized in [imports/startup/server/example.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/startup/server/example.js).
+The ExampleCollection collection is initialized in [imports/startup/server/example.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/packages/justinr1234-example/imports/startup/server/example.js) of the justinr1234:example package.
 
 ### CSS
 
@@ -246,7 +250,7 @@ The application uses [Semantic UI](http://semantic-ui.com/), and installs one Me
 
 The Semantic UI theme files are located in [app/client/lib/semantic-ui](https://github.com/justinr1234/opinionated-meteor-application-template/tree/master/client/lib/semantic-ui) directory.
 
-Because the application implements a menu fixed to the top of the screen, the [client/lib/semantic-ui/site/globals/site.overrides.import.less](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/client/lib/semantic-ui/site/globals/site.overrides.import.less) file adds 61px of padding to the body. Other page templates add additional padding to improve the look. All modifications exist in the /site/ directory of Semantic UI.
+Because the application implements a menu fixed to the top of the screen (via the justinr1234:golgi package), the [client/lib/semantic-ui/site/globals/site.overrides.import.less](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/client/lib/semantic-ui/site/globals/site.overrides.import.less) file adds 70px of padding to the body. Other page templates add additional padding to improve the look. All modifications exist in the /site/ directory of Semantic UI except a few that live in the [https://github.com/justinr1234/justinr1234-golgi/blob/master/client/lib/](justinr1234:golgi) package.
 
 To learn more about the Semantic UI theme, see [Semantic-UI-Meteor](https://github.com/Semantic-Org/Semantic-UI-Meteor).
 
@@ -254,17 +258,17 @@ To learn more about the Semantic UI theme, see [Semantic-UI-Meteor](https://gith
 
 For display and navigation among its four pages, the application uses [Flow Router](https://github.com/kadirahq/flow-router).
 
-Routing is defined in [imports/startup/client/router.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/startup/client/router.js) which calls out to a more robust mapper that defines the actual routes in [imports/api/helpers/both/routes/routes.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/api/helpers/both/routes/routes.js).
+Routing is defined in [imports/startup/client/router.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/startup/client/router.js) which calls out to a more robust mapper that defines the actual routes in [imports/api/helpers/both/routes/routes.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/api/helpers/both/routes/routes.js) in addition to several global routes defined automatically in the [justinr1234:lib](https://github.com/justinr1234/justinr1234-lib/blob/master/imports/routes.js) package.
 
 ### Forms
 
 To implement the Example Add and Example Edit pages, the application uses [AutoForm](https://github.com/aldeed/meteor-autoform).
 
-To present the forms, the application uses the quickform component.  See [imports/ui/pages/example/example-add.html](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/ui/pages/example/example-add.html) and [imports/ui/pages/example/example-edit.html](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/ui/pages/example/example-edit.html).
+See the [justinr1234:example](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/packages/justinr1234-example) package: [imports/ui/pages/example/example-add.html](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/packages/justinr1234-example/imports/ui/pages/example/example-add.html) and [imports/ui/pages/example/example-edit.html](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/packages/justinr1234-example/imports/ui/pages/example/example-edit.html).
 
 ### Authentication
 
-For authentication, the application uses the Meteor accounts-ui package, with some simple customization in [imports/startup/both/accounts-config.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/startup/both/accounts-config.js).
+For authentication, the application uses the Meteor accounts-ui package, with some simple customization in the [justinr1234:lib](https://github.com/justinr1234/justinr1234-lib/blob/master/imports/startup/both/accounts-config.js) package.
 
 When the application is run for the first time, a settings file (such as [config/settings.development.json](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/config/settings.development.json)) should be passed to Meteor. That will lead to a default account being created through the code in [imports/startup/server/accounts.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/startup/server/accounts.js).
 
@@ -272,9 +276,9 @@ The application allows users to register and create new accounts at any time.
 
 ### Authorization
 
-Only logged in users can manipulate ExampleCollection documents. You can only edit and view documents owned by the currently logged in user.
+Only logged in users can manipulate `ExampleCollection` documents. You can only edit and view documents owned by the currently logged in user.
 
-To prevent users who are not logged in from accessing pages that manipulate ExampleCollection instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions).
+To prevent users who are not logged in from accessing pages that manipulate `ExampleCollection` instances, template-based authorization is used following the recommendations in [Implementing Auth Logic and Permissions](https://kadira.io/academy/meteor-routing-guide/content/implementing-auth-logic-and-permissions).
 
 The application implements template-based authorization using an If_Logged_In template, defined in [imports/ui/layouts/if-logged-in.html](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/ui/layouts/if-logged-in.html) and [imports/ui/layouts/if-logged-in.js](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/imports/ui/layouts/if-logged-in.js).
 
@@ -283,6 +287,15 @@ The application implements template-based authorization using an If_Logged_In te
 The [config](https://github.com/justinr1234/opinionated-meteor-application-template/tree/master/config) directory is intended to hold settings files.  The repository contains one file: [config/settings.development.json](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/config/settings.development.json).
 
 The [.gitignore](https://github.com/justinr1234/opinionated-meteor-application-template/blob/master/.gitignore) file prevents a file named settings.production.json from being committed to the repository. So, if you are deploying the application, you can put settings in a file named settings.production.json and it will not be committed.
+
+Additionally external `justinr1234:` packages (`justinr1234:lib`, `justinr1234:golgi`, `justinr1234:menu`) are put in the `.gitignore` as well. This allows you to develop and make changes to these packages locally without accidentally commiting them since they live in different repositories.
+
+For example, if you wanted to develop changes to the `justinr1234:golgi` menu:
+
+1. From the directory that you have `opinionated-meteor-application-template`, clone the `justinr1234:golgi` repo into your packages directory: `git clone https://github.com/justinr1234/justinr1234-golgi.git ./packages/justinr1234-golgi`
+2. Make your changes to `justinr1234:golgi`
+3. Meteor will build using this package over the remote one pulled from Atmosphere
+4. `cd ./packages/justinr1234-golgi && git add . && git commit -m "Made some changes" && git push origin HEAD` (requires `origin` remote to point to your fork of `justinr1234:golgi` on Github). Then create a PR to `justinr1234:golgi`!
 
 ### Quality Assurance
 
