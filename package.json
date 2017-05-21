@@ -6,7 +6,7 @@
     "start-dev": "DEBUG=* meteor --no-release-check --settings ./config/settings.development.json",
     "lint": "eslint .",
     "test": "meteor test --driver-package practicalmeteor:mocha --port 3100",
-    "test-watch": "TEST_BROWSER_DRIVER=chrome TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100",
+    "test-watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100",
     "server-test": "meteor test --once --driver-package dispatch:mocha --port 3100",
     "server-test-watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100"
   },
@@ -27,7 +27,6 @@
   "devDependencies": {
     "autoprefixer": "^6.3.1",
     "chai": "*",
-    "chromedriver": "^2.29.0",
     "docdash": "^0.3.0",
     "es6-enum": "^1.0.3",
     "eslint": "^2.7.0",
@@ -37,7 +36,6 @@
     "eslint-plugin-react": "^4.3.0",
     "ghooks": "^2.0.0",
     "opt-cli": "^1.5.1",
-    "selenium-webdriver": "3.0.0-beta-2",
     "sinon": "^2.1.0"
   },
   "postcss": {

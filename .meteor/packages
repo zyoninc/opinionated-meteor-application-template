@@ -7,13 +7,13 @@
 # Basic packages and utilities for most Meteor app development
 meteor-base@1.0.4
 mobile-experience@1.0.4
-mongo@1.1.16
+mongo@1.1.17
 blaze-html-templates@1.0.4
 session@1.1.7
 jquery@1.11.10
-tracker@1.1.2
+tracker@1.1.3
 es5-shim@4.6.15
-ecmascript@0.7.2
+ecmascript@0.7.3
 underscore@1.0.10
 ejson@1.0.13
 check@1.2.5
@@ -31,7 +31,7 @@ sacha:spin
 
 # Account management
 accounts-ui@1.1.9
-accounts-password@1.3.5
+accounts-password@1.3.6
 
 # Routing
 kadira:flow-router
@@ -55,6 +55,6 @@ dispatch:mocha
 random@1.0.10
 ongoworks:security
 alanning:roles
-justinr1234:lib@0.0.8
+justinr1234:lib
 justinr1234:example
 mdg:validated-method

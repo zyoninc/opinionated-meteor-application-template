@@ -45,4 +45,3 @@ export const composedHelpers = { ...helpers, ...subscriptionHandlersHelpers() };
 
 Template.EXAMPLE_EDIT.onCreated(onCreated);
 Template.EXAMPLE_EDIT.helpers(composedHelpers);
-

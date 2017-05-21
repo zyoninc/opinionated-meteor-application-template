@@ -1,7 +1,7 @@
 /* globals Package, Npm */
 Package.describe({
   name: 'justinr1234:example',
-  version: '0.0.2',
+  version: '0.0.3',
   summary: 'justinr1234 Example',
   documentation: 'README.md',
   git: 'https://github.com/justinr1234/opinionated-meteor-application-template.git',
