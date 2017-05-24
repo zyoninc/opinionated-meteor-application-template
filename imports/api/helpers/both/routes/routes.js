@@ -14,12 +14,6 @@ export const routes = {
   HOME_PAGE: {
     path: '/home',
   },
-  APP_LOGIN: {
-    path: '/login',
-  },
-  APP_REGISTER: {
-    path: '/register',
-  },
 };
 
 export const notFound = {

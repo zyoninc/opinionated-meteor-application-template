@@ -6,6 +6,7 @@ const HEADER_HELPERS = {
   homePage: () => Router.routeMap.HOME_PAGE.path,
   exampleAddPage: () => Router.routeMap.EXAMPLE_ADD.path,
   exampleListPage: () => Router.routeMap.EXAMPLE_LIST.path,
+  kitchenSinkPage: () => Router.routeMap.KITCHEN_SINK.path,
   routes: () => _.map(Router.routeMap, route => route),
 };
 

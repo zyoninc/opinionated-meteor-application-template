@@ -1,10 +1,11 @@
 <template name="Header">
     <div class="ui top fixed borderless inverted menu">
   <div class="ui container">
-      <a class="item" href="{{ homePage }}"><h1>opinionated-meteor-application-template</h1></a>
+      <a class="item" href="{{ homePage }}"><h2>opinionated-meteor-application-template</h2></a>
       {{#if currentUser}}
         <a class="{{ isActivePath exampleAddPage }} item" href="{{ exampleAddPage }}">Add Example</a>
         <a class="{{ isActivePath exampleListPage }} item" href="{{ exampleListPage }}">List Example</a>
+        <a class="{{ isActivePath kitchenSinkPage }} item" href="{{ kitchenSinkPage }}">Kitchen Sink</a>
         {{> DEBUG_ROUTE_MENU routes=routes }}
       {{/if}}
       <a href="#" class="right aligned item">{{> loginButtons align="right"}} </a>

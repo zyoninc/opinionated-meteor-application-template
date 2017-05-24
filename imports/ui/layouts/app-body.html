@@ -1,5 +1,12 @@
 <template name="App_Body">
-  {{> Header}}
-  {{>Template.dynamic template=main}}
-  {{> Footer}}
+  {{#Nav ajax='/data/nav-data.json' }}
+    {{> Template.dynamic template=main }}
+    {{> Footer }}
+  {{/Nav}}
+</template>
+
+<template name="App_Body_BACKUP">
+  {{> Nav }}
+  {{> Template.dynamic template=main }}
+  {{> Footer }}
 </template>

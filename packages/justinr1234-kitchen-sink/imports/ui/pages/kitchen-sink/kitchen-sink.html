@@ -1,0 +1,46 @@
+<template name="KITCHEN_SINK">
+  <div class="main ui container">
+    <!-- Semantic-UI Menu -->
+    <h2 class="ui dividing header">Semantic-UI Menu<a class="anchor"></a></h2>
+    <!-- fixed -->
+    <div class="example">
+      <h4 class="ui header">FIXED MENU</h4>
+      <p>
+        <b>template:</b> Menu<br>
+        <b>classes:</b> ui top fixed menu
+      </p>
+      <div class="container"> {{> Menu classes='ui top fixed menu demo-menu' }} </div>
+      <div class="ui info message">
+        <p>The fixed menu stays attached to the top of the window. The javascript is initialized in the <b>Template.Menu.onRendered</b> callback.</p>
+        <a class="ui secondary button large" id="toggleHide">Toggle Hide / Show</a>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <!-- inline -->
+    <div class="example">
+      <h4 class="ui header">INLINE MENU</h4>
+      <p>
+        <b>template:</b> Menu<br>
+        <b>classes:</b> ui top attached menu
+      </p>
+      <div class="container"> {{> Menu classes='ui top attached menu' }} </div>
+      <div class="ui info message">
+        <p>The inline menu is relatively embedded in the parent <b>div</b> container.</p>
+      </div>
+    </div>
+    <div class="ui divider"></div>
+    <!-- inline -->
+    <div class="example">
+      <h4 class="ui header">JSON MENU</h4>
+      <p>
+        <b>template:</b> Menu<br>
+        <b>classes:</b> ui top attached menu<br>
+        <b>json:</b> <i>reference to data</i>
+      </p>
+      <div class="container"> {{> Menu classes='ui top attached menu' json=jsonData }} </div>
+      <div class="ui info message">
+        <p>Here the data is being passed through the <b>json</b> attribute. For testing purposes data is hardcoded in <i>kitchen-sink.js</i>.</p>
+      </div>
+    </div>
+  </div>
+</template>
