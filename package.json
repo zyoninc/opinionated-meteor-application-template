@@ -5,10 +5,10 @@
     "start": "meteor --no-release-check --settings ./config/settings.development.json",
     "start-dev": "DEBUG=* meteor --no-release-check --settings ./config/settings.development.json",
     "lint": "eslint .",
-    "test": "meteor test --driver-package practicalmeteor:mocha --port 3100",
-    "test-watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100",
-    "server-test": "meteor test --once --driver-package dispatch:mocha --port 3100",
-    "server-test-watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100"
+    "test": "meteor test --driver-package practicalmeteor:mocha --port 3100 --settings ./config/settings.development.json",
+    "test-watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100 --settings ./config/settings.development.json",
+    "server-test": "meteor test --once --driver-package dispatch:mocha --port 3100 --settings ./config/settings.development.json",
+    "server-test-watch": "TEST_WATCH=1 meteor test --driver-package dispatch:mocha --port 3100 --settings ./config/settings.development.json"
   },
   "config": {
     "ghooks": {
