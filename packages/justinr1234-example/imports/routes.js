@@ -9,15 +9,21 @@ export const routes = {
   EXAMPLE: {
     path: '/example/',
     action: () => defaultBlazeRender('EXAMPLE_LIST'),
+    authRequired: true,
+    roles: ['user', 'admin'],
   },
   EXAMPLE_ADD: {
     path: '/example/add',
+    authRequired: true,
+    roles: ['admin'],
   },
   EXAMPLE_LIST: {
     path: '/example/list',
   },
   EXAMPLE_EDIT: {
     path: '/example/:_id',
+    authRequired: true,
+    roles: ['admin'],
   },
 };
 

@@ -7,13 +7,21 @@ import { APP_NOT_FOUND, defaultBlazeRender, Router } from 'meteor/justinr1234:li
 //  b) Child paths begin with the group and end WITHOUT a / (e.g. /example/add)
 //  c) Root pages work just like any other child as in (b) (e.b. /home)
 export const routes = {
+
   ROOT: {
     path: '/',
     action: () => defaultBlazeRender('HOME_PAGE'),
+    authRequired: true,
+    roles: ['user', 'admin'],
   },
+
   HOME_PAGE: {
     path: '/home',
+    name: 'Home',
+    authRequired: true,
+    roles: ['user', 'admin'],
   },
+
 };
 
 export const notFound = {
